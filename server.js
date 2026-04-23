@@ -11,11 +11,14 @@ app.use(cors());
 
 const path = require('path');
 
-// Serve static files (frontend)
-app.use(express.static(path.join(__dirname)));
-
+// Default route for backend health check
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.send(`
+        <div style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+            <h1 style="color: #4f46e5;">🚀 Backend successfully created!</h1>
+            <p style="color: #6b7280; font-size: 18px;">The Student Grievance System API is up and running.</p>
+        </div>
+    `);
 });
 
 // MongoDB Connection
