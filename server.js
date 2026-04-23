@@ -9,15 +9,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Default route for backend health check
-app.get('/', (req, res) => {
-    res.send(`
-        <div style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
-            <h1 style="color: #4f46e5;">🚀 Backend Executed Successfully!</h1>
-            <p style="color: #6b7280; font-size: 18px;">The Student Grievance System API is up and running seamlessly on Render.</p>
-        </div>
-    `);
-});
+// Serve static files (frontend)
+app.use(express.static(__dirname));
 
 // MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/student_grievance';
