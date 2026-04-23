@@ -9,8 +9,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const path = require('path');
+
 // Serve static files (frontend)
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname)));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/student_grievance';
